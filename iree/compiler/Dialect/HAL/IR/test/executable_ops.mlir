@@ -66,8 +66,8 @@ hal.executable @ex_with_source {
 
 // CHECK-LABEL: @executable_cache
 func @executable_cache(%arg0 : !hal.executable_cache, %arg1 : !hal.executable_layout) {
-  // CHECK: hal.executable_cache.prepare %arg0, layout = %arg1, caching_mode = "AliasProvidedData|AllowPersistentCaching|AllowOptimization", @exe : !hal.executable
-  %executable_exe = hal.executable_cache.prepare %arg0, layout = %arg1, caching_mode = "AliasProvidedData|AllowPersistentCaching|AllowOptimization", @exe : !hal.executable
+  // CHECK: hal.executable_cache.prepare %arg0, caching_mode = "AliasProvidedData|AllowPersistentCaching|AllowOptimization", @exe, layouts = [%arg1, %arg1] : !hal.executable
+  %executable_exe = hal.executable_cache.prepare %arg0, caching_mode = "AliasProvidedData|AllowPersistentCaching|AllowOptimization", @exe, layouts = [%arg1, %arg1] : !hal.executable
   return
 }
 

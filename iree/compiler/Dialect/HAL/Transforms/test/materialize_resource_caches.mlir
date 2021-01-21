@@ -124,7 +124,7 @@ hal.executable @exe {
 // CHECK-NEXT: hal.device.switch(%dev : !hal.device)
 // CHECK-NEXT: #hal.device.match.id<"vmla">(%[[CACHE_CAPTURE:.+]] = %executable_cache_default : !hal.executable_cache) {
 // CHECK-NEXT:   %[[LAYOUT:.+]] = hal.variable.load @_executable_layout_0 : !hal.executable_layout
-// CHECK-NEXT:   %[[EXE:.+]] = hal.executable_cache.prepare %[[CACHE_CAPTURE]], layout = %[[LAYOUT]], caching_mode = "AliasProvidedData|AllowPersistentCaching|AllowOptimization", @exe : !hal.executable
+// CHECK-NEXT:   %[[EXE:.+]] = hal.executable_cache.prepare %[[CACHE_CAPTURE]], caching_mode = "AliasProvidedData|AllowPersistentCaching|AllowOptimization", layouts = [%[[LAYOUT]]], @exe : !hal.executable
 // CHECK-NEXT:   hal.variable.store %[[EXE]], @_executable_exe : !hal.executable
 // CHECK-NEXT:   hal.return
 
